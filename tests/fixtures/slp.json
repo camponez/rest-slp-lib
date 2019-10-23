@@ -1,0 +1,22 @@
+{
+    "decimals": 4,
+    "timestamp": "2019-10-18 19:25:18",
+    "versionType": 1,
+    "documentUri": "",
+    "symbol": "CRZ",
+    "name": "Cruzeiro",
+    "containsBaton": true,
+    "id": "57d92951dd4e545d42535e12a70f20fab2139caf36c4700afcaf945c60a8c797",
+    "documentHash": null,
+    "initialTokenQty": 400,
+    "blockCreated": 605140,
+    "blockLastActiveSend": 605404,
+    "blockLastActiveMint": null,
+    "txnsSinceGenesis": 13,
+    "validAddresses": 6,
+    "totalMinted": 400,
+    "totalBurned": 0,
+    "circulatingSupply": 400,
+    "mintingBatonStatus": "ALIVE",
+    "timestampUnix": 1571426718
+}
