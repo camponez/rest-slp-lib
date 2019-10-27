@@ -25,5 +25,5 @@ def test_get(mock_get):
     api = API()
     api.get()
 
-    assert api.api_url == 'https://rest.bitcoin.com/v2'
+    assert api.base_url == 'https://rest.bitcoin.com/v2'
     mock_get.call_once()

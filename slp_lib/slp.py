@@ -25,7 +25,7 @@ class SLP(API):
         """
         Convert address
         """
-        self.api_url += '/slp/convert/{}'.format(adr)
+        self.api_url = '{}/slp/convert/{}'.format(self.base_url, adr)
         return json.loads(self.get())
 
     @property
@@ -40,7 +40,7 @@ class SLP(API):
         """
         Load info
         """
-        self.api_url += '/slp/list/{}'.format(self.id)
+        self.api_url = '{}/slp/list/{}'.format(self.base_url, self.id)
         response = json.loads(self.get())
 
         self.name = response['name']

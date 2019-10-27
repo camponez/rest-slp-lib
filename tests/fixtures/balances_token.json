@@ -1,0 +1,16 @@
+[
+    {
+        "tokenId": "57d92951dd4e545d42535e12a70f20fab2139caf36c4700afcaf945c60a8c797",
+        "balance": 100,
+        "balanceString": "100",
+        "slpAddress": "simpleledger:qzz7arqchh5hmfyxlygp3kn9t335gens55j8gn2mdt",
+        "decimalCount": 4
+    },
+    {
+        "tokenId": "9da859c976ff790c0ada1c7e35e62fe0f6d873e19704fe4f2661da92f163ba61",
+        "balance": 9,
+        "balanceString": "10",
+        "slpAddress": "simpleledger:qzz7arqchh5hmfyxlygp3kn9t335gens55j8gn2mdt",
+        "decimalCount": 4
+    }
+]

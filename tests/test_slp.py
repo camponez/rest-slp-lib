@@ -30,8 +30,7 @@ def test_convert():
     with patch('slp_lib.api.API.get') as mock_api_get:
         mock_api_get.return_value = response
         slp_cls = SLP()
-        slp = slp_cls.convert_adr(
-            'simpleledger:qz9tzs6d5097ejpg279rg0rnlhz546q4fsnck9wh5m')
+        slp = slp_cls.convert_adr('ANY_ADRESS')
         assert slp['slpAddress'] == 'simpleledger:qz9tzs6d5097ejpg279rg0rnlhz546q4fsnck9wh5m'
         assert slp['cashAddress'] == 'bitcoincash:qz9tzs6d5097ejpg279rg0rnlhz546q4fslra7mh29'
         assert slp['legacyAddress'] == '1DeLbv5EMzLEFDvQ8wZiKeSuPGGtSSz5HP'

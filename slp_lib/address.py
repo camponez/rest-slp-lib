@@ -2,6 +2,7 @@
 import json
 
 from slp_lib.api import API
+from slp_lib.slp import SLP
 
 
 class Address(API):
@@ -11,12 +12,14 @@ class Address(API):
 
     def __init__(self, address):
         API.__init__(self)
+        self.address = address
         self._balance = None
         self._slp_address = None
         self._legacy_address = None
         self._cash_address = None
+        self.tokens = {}
 
-        self._load(address)
+        self._load()
 
     @property
     def balance(self):
@@ -62,10 +65,26 @@ class Address(API):
     def cash_address(self, value):
         self._cash_address = value
 
-    def _load(self, address):
-        self.api_url += "/address/details/{}".format(address)
+    def _load(self):
+        self.api_url = "{}/address/details/{}".format(self.base_url,
+                                                      self.address)
         response = json.loads(self.get())
-        self.balance = response['balance']
+        self.bch_balance = response['balance']
         self.slp_address = response['slpAddress']
         self.legacy_address = response['legacyAddress']
         self.cash_address = response['cashAddress']
+
+    def load_tokens(self):
+        """
+        Load Balance of tokens
+        """
+        self.tokens = {}
+        self.api_url = '{}/slp/balancesForAddress/{}'.format(self.base_url,
+                                                             self.slp_address)
+
+        l_tokens = json.loads(self.get())
+        print(l_tokens)
+
+        for token in l_tokens:
+            slp = SLP(token['tokenId'])
+            self.tokens[slp.symbol] = token['balance']
