@@ -10,15 +10,15 @@ class SLP(API):
     Class SLP
     """
 
-    def __init__(self, id=None):
+    def __init__(self, token_id=None):
         API.__init__(self)
-        self.id = id
+        self.token_id = token_id
         self._name = None
         self._symbol = None
         self._version_type = None
         self._total_minted = None
 
-        if self.id:
+        if self.token_id:
             self._load()
 
     def convert_adr(self, adr):
@@ -40,7 +40,7 @@ class SLP(API):
         """
         Load info
         """
-        self.api_url = '{}/slp/list/{}'.format(self.base_url, self.id)
+        self.api_url = '{}/slp/list/{}'.format(self.base_url, self.token_id)
         response = json.loads(self.get())
 
         self.name = response['name']
