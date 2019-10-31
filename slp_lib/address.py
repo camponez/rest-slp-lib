@@ -13,7 +13,7 @@ class Address(API):
     def __init__(self, address):
         API.__init__(self)
         self.address = address
-        self._balance = None
+        self._bch_balance = None
         self._slp_address = None
         self._legacy_address = None
         self._cash_address = None
@@ -22,15 +22,15 @@ class Address(API):
         self._load()
 
     @property
-    def balance(self):
+    def bch_balance(self):
         """
         Balance Property
         """
-        return self._balance
+        return self._bch_balance
 
-    @balance.setter
-    def balance(self, value):
-        self._balance = value
+    @bch_balance.setter
+    def bch_balance(self, value):
+        self._bch_balance = value
 
     @property
     def slp_address(self):
