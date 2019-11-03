@@ -56,3 +56,16 @@ def test_balance():
             'bch': 0.01,
             'tokens': {'CRZ': 100, 'CRP': 9}
         }
+
+
+def test_balance_no_tokens():
+    r_address = open(FIXTURE_DIR + '/fixtures/address.json').read()
+
+    with patch('slp_lib.api.API.get') as mock_api_get:
+        mock_api_get.side_effect = [r_address, "{}"]
+        adr = Address('ADR_TEST')
+        adr.load_tokens()
+        assert adr.balance == {
+            'bch': 0.01,
+            'tokens': {}
+        }
