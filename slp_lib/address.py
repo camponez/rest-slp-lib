@@ -13,6 +13,7 @@ class Address(API):
     def __init__(self, address):
         API.__init__(self)
         self.address = address
+        self._balance = None
         self._bch_balance = None
         self._slp_address = None
         self._legacy_address = None
@@ -22,15 +23,14 @@ class Address(API):
         self._load()
 
     @property
-    def bch_balance(self):
+    def balance(self):
         """
         Balance Property
         """
-        return self._bch_balance
-
-    @bch_balance.setter
-    def bch_balance(self, value):
-        self._bch_balance = value
+        balance = {}
+        balance['bch'] = self._bch_balance
+        balance['tokens'] = self.tokens
+        return balance
 
     @property
     def slp_address(self):
@@ -69,7 +69,7 @@ class Address(API):
         self.api_url = "{}/address/details/{}".format(self.base_url,
                                                       self.address)
         response = json.loads(self.get())
-        self.bch_balance = response['balance']
+        self._bch_balance = response['balance']
         self.slp_address = response['slpAddress']
         self.legacy_address = response['legacyAddress']
         self.cash_address = response['cashAddress']
@@ -83,7 +83,6 @@ class Address(API):
                                                              self.slp_address)
 
         l_tokens = json.loads(self.get())
-        print(l_tokens)
 
         for token in l_tokens:
             slp = SLP(token['tokenId'])
